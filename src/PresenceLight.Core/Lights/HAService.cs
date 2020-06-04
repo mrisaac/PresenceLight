@@ -41,40 +41,41 @@ namespace PresenceLight.Core.Lights
                 serviceClient = ClientFactory.GetClient<ServiceClient>();
             }
         }
-    }
-    public async Task SetScene(string availability)
-    {
-
-        var entityid = string.Empty;
-        switch (availability)
+        public async Task SetScene(string availability)
         {
-            case "Available":
-                entityid = "working_free";
-                break;
-            case "Busy":
-                entityid = "working_busy";
-                break;
-            case "BeRightBack":
-                entityid = "working_away";
-                break;
-            case "Away":
-                entityid = "working_away";
-                break;
-            case "DoNotDisturb":
-                entityid = "working_video";
-                break;
-            case "Offline":
-                entityid = "working_free";
-                break;
-            case "Off":
-                entityid = "working_free"; ;
-                break;
-            default:
-                entityid = "working_free";
-                break;
+
+            var entityid = string.Empty;
+            switch (availability)
+            {
+                case "Available":
+                    entityid = "working_free";
+                    break;
+                case "Busy":
+                    entityid = "working_busy";
+                    break;
+                case "BeRightBack":
+                    entityid = "working_away";
+                    break;
+                case "Away":
+                    entityid = "working_away";
+                    break;
+                case "DoNotDisturb":
+                    entityid = "working_video";
+                    break;
+                case "Offline":
+                    entityid = "working_free";
+                    break;
+                case "Off":
+                    entityid = "working_free"; ;
+                    break;
+                default:
+                    entityid = "working_free";
+                    break;
+            }
+
+            await this.serviceClient.CallService("scene.turn_on", new { entity_id = entityid });
+
         }
-
-        await this.serviceClient.CallService("scene.turn_on", new { entity_id = entityid });
-
     }
+    
 }
