@@ -33,11 +33,15 @@ namespace PresenceLight.Core
         ErrorMessage = "Characters are not allowed.")]
         public string? HueIpAddress { get; set; }
         public string? IconType { get; set; }
+        public string? HAURL { get; set; }
+        public string? HAToken { get; set; }
 
         public bool IsLIFXEnabled { get; set; }
 
         public bool IsPhillipsEnabled { get; set; }
 
         public bool IsYeelightEnabled { get; set; }
+
+        public bool IsHAEnabled { get; set; }
     }
 }
